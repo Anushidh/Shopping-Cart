@@ -2,7 +2,7 @@ import { useProducts } from '../../hooks/useProducts';
 import { useProductFilters } from '../../hooks/useProductFilters';
 import { ProductCard } from '../../components/ProductCard';
 import { ProductSkeleton } from '../../components/ProductSkeleton';
-import { X, Loader2, AlertCircle } from 'lucide-react';
+import { X, AlertCircle } from 'lucide-react';
 
 export const ProductListing = () => {
   const { data: response, isLoading, isError, error } = useProducts();
@@ -35,10 +35,10 @@ export const ProductListing = () => {
     <div className="max-w-[1400px] mx-auto px-6 py-12 flex flex-col md:flex-row gap-12">
       <aside className="w-full md:w-56 flex-shrink-0">
         <div className="sticky top-24 space-y-12">
-          <div className="flex items-center justify-between border-b border-black pb-4">
+          <div className="flex items-center justify-between border-b border-black dark:border-white pb-4">
             <h2 className="text-xs uppercase tracking-widest font-bold">Filters</h2>
             {(search || category || maxPrice || sortOption) && (
-              <button onClick={clearFilters} className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black flex items-center gap-1 cursor-pointer">
+              <button onClick={clearFilters} className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black dark:hover:text-white flex items-center gap-1 cursor-pointer transition-colors">
                 <X size={12} /> Clear
               </button>
             )}
@@ -60,7 +60,7 @@ export const ProductListing = () => {
               <select
                 value={sortOption}
                 onChange={(e) => setSortOption(e.target.value as any)}
-                className="input-field appearance-none cursor-pointer text-xs uppercase tracking-widest pb-1"
+                className="input-field appearance-none cursor-pointer text-xs uppercase tracking-widest pb-1 dark:bg-zinc-950"
               >
                 <option value="">RECOMMENDED</option>
                 <option value="price-asc">PRICE: LOW TO HIGH</option>
@@ -74,7 +74,7 @@ export const ProductListing = () => {
               <select
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="input-field appearance-none cursor-pointer text-xs uppercase tracking-widest pb-1"
+                className="input-field appearance-none cursor-pointer text-xs uppercase tracking-widest pb-1 dark:bg-zinc-950"
               >
                 <option value="">ALL</option>
                 {uniqueCategories.map((cat) => (
@@ -97,7 +97,7 @@ export const ProductListing = () => {
                 step="10"
                 value={maxPrice || 1000}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
-                className="w-full accent-black cursor-pointer h-1 bg-gray-200 rounded-none appearance-none"
+                className="w-full accent-black dark:accent-white cursor-pointer h-1 bg-gray-200 dark:bg-zinc-800 rounded-none appearance-none"
               />
             </div>
           </div>
@@ -109,7 +109,7 @@ export const ProductListing = () => {
           <div>
             <h1 className="text-3xl lg:text-4xl font-light uppercase tracking-[0.2em] mb-2">Collection</h1>
             {!isLoading && (
-              <p className="text-gray-500 text-xs uppercase tracking-widest">
+              <p className="text-gray-500 dark:text-gray-400 text-xs uppercase tracking-widest">
                 {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'}
               </p>
             )}
@@ -124,7 +124,7 @@ export const ProductListing = () => {
           </div>
         ) : filteredProducts.length === 0 ? (
           <div className="py-24 flex flex-col items-center text-center text-gray-400">
-            <p className="text-sm uppercase tracking-widest mb-6 text-black">No items match your criteria</p>
+            <p className="text-sm uppercase tracking-widest mb-6 text-black dark:text-white">No items match your criteria</p>
             <button onClick={clearFilters} className="btn btn-primary">
               Clear Filters
             </button>

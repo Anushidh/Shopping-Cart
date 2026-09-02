@@ -62,7 +62,7 @@ export const CheckoutPage = () => {
   if (step === 4) {
     return (
       <div className="max-w-3xl mx-auto px-6 py-24 text-center">
-        <div className="w-16 h-16 bg-black text-white rounded-full flex items-center justify-center mx-auto mb-8">
+        <div className="w-16 h-16 bg-black dark:bg-white text-white dark:text-black rounded-full flex items-center justify-center mx-auto mb-8">
           <Check size={32} />
         </div>
         <h1 className="text-3xl font-light uppercase tracking-[0.2em] mb-4">Order Confirmed</h1>
@@ -76,10 +76,10 @@ export const CheckoutPage = () => {
 
   return (
     <div className="max-w-[1000px] mx-auto px-6 py-12">
-      <div className="flex items-center justify-center gap-8 mb-16 border-b border-gray-200 pb-8">
+      <div className="flex items-center justify-center gap-8 mb-16 border-b border-gray-200 dark:border-zinc-800 pb-8">
         {[1, 2, 3].map((s) => (
-          <div key={s} className={`flex items-center gap-2 text-xs uppercase tracking-widest font-bold ${step === s ? 'text-black' : 'text-gray-300'}`}>
-            <span className={`w-6 h-6 flex items-center justify-center border ${step === s ? 'border-black bg-black text-white' : 'border-gray-300'}`}>
+          <div key={s} className={`flex items-center gap-2 text-xs uppercase tracking-widest font-bold ${step === s ? 'text-black dark:text-white' : 'text-gray-300 dark:text-zinc-600'}`}>
+            <span className={`w-6 h-6 flex items-center justify-center border ${step === s ? 'border-black bg-black text-white dark:border-white dark:bg-white dark:text-black' : 'border-gray-300 dark:border-zinc-700'}`}>
               {s}
             </span>
             <span className="hidden sm:inline">
@@ -95,7 +95,7 @@ export const CheckoutPage = () => {
           
           {isCartEmpty ? (
             <div className="py-12 text-center text-gray-500">
-              <p className="uppercase tracking-widest text-sm mb-6 text-black">Your bag is empty</p>
+              <p className="uppercase tracking-widest text-sm mb-6 text-black dark:text-white">Your bag is empty</p>
               <Link to="/" className="btn btn-primary">
                 Return to Shop
               </Link>
@@ -104,8 +104,8 @@ export const CheckoutPage = () => {
             <div className="flex flex-col lg:flex-row gap-12">
               <div className="flex-grow space-y-6">
                 {items.map((item) => (
-                  <div key={item.id} className="flex gap-6 border-b border-gray-100 pb-6">
-                    <div className="w-24 h-32 bg-gray-50 flex-shrink-0">
+                  <div key={item.id} className="flex gap-6 border-b border-gray-100 dark:border-zinc-900 pb-6">
+                    <div className="w-24 h-32 bg-gray-50 dark:bg-zinc-900 flex-shrink-0">
                       <img src={item.thumbnail} alt={item.title} className="w-full h-full object-cover" />
                     </div>
                     <div className="flex-grow flex flex-col justify-between py-2">
@@ -120,12 +120,12 @@ export const CheckoutPage = () => {
                       </div>
                       
                       <div className="flex justify-between items-end">
-                        <div className="flex items-center border border-black">
-                          <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-2 hover:bg-gray-100 disabled:opacity-30 cursor-pointer" disabled={item.quantity <= 1}>
+                        <div className="flex items-center border border-black dark:border-white">
+                          <button onClick={() => updateQuantity(item.id, item.quantity - 1)} className="p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 disabled:opacity-30 cursor-pointer" disabled={item.quantity <= 1}>
                             <Minus size={12} />
                           </button>
                           <span className="w-8 text-center text-xs font-bold">{item.quantity}</span>
-                          <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="p-2 hover:bg-gray-100 disabled:opacity-30 cursor-pointer" disabled={item.quantity >= 5}>
+                          <button onClick={() => updateQuantity(item.id, item.quantity + 1)} className="p-2 hover:bg-gray-100 dark:hover:bg-zinc-800 disabled:opacity-30 cursor-pointer" disabled={item.quantity >= 5}>
                             <Plus size={12} />
                           </button>
                         </div>
@@ -137,7 +137,7 @@ export const CheckoutPage = () => {
               </div>
               
               <div className="w-full lg:w-80 flex-shrink-0">
-                <div className="bg-gray-50 p-6">
+                <div className="bg-gray-50 dark:bg-zinc-900/50 p-6">
                   <h3 className="text-xs font-bold uppercase tracking-widest mb-6">Order Summary</h3>
                   <div className="space-y-4 text-sm mb-6">
                     <div className="flex justify-between">
@@ -147,7 +147,7 @@ export const CheckoutPage = () => {
                   </div>
                   
                   {!isMinCheckoutMet && (
-                    <div className="bg-red-50 text-red-600 p-4 text-[10px] uppercase tracking-widest mb-6 border border-red-100">
+                    <div className="bg-red-50 dark:bg-red-950/20 text-red-600 dark:text-red-400 p-4 text-[10px] uppercase tracking-widest mb-6 border border-red-100 dark:border-red-900/50">
                       Minimum order value of $10.00 required to checkout.
                     </div>
                   )}
@@ -225,28 +225,28 @@ export const CheckoutPage = () => {
         <div className="animate-in fade-in duration-500 max-w-2xl mx-auto">
           <h2 className="text-2xl font-light uppercase tracking-[0.2em] mb-8 text-center">Payment Summary</h2>
           
-          <div className="bg-gray-50 p-8 mb-8">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 border-b border-gray-200 pb-2">Shipping To</h3>
-            <div className="text-sm space-y-1 text-gray-600">
-              <p className="font-medium text-black uppercase tracking-widest text-xs">{formData.fullName}</p>
+          <div className="bg-gray-50 dark:bg-zinc-900/50 p-8 mb-8">
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 border-b border-gray-200 dark:border-zinc-800 pb-2">Shipping To</h3>
+            <div className="text-sm space-y-1 text-gray-600 dark:text-zinc-400">
+              <p className="font-medium text-black dark:text-white uppercase tracking-widest text-xs">{formData.fullName}</p>
               <p>{formData.address}</p>
               <p>{formData.city}, {formData.postalCode}</p>
               <p>{formData.email} • {formData.phoneNumber}</p>
             </div>
           </div>
 
-          <div className="bg-gray-50 p-8 mb-8">
-            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 border-b border-gray-200 pb-2">Order Details</h3>
+          <div className="bg-gray-50 dark:bg-zinc-900/50 p-8 mb-8">
+            <h3 className="text-xs font-bold uppercase tracking-widest mb-4 border-b border-gray-200 dark:border-zinc-800 pb-2">Order Details</h3>
             <div className="space-y-4 mb-8">
               {items.map(item => (
                 <div key={item.id} className="flex justify-between text-sm">
-                  <span className="text-gray-600 uppercase tracking-widest text-[10px]">{item.quantity}x {item.title}</span>
+                  <span className="text-gray-600 dark:text-zinc-400 uppercase tracking-widest text-[10px]">{item.quantity}x {item.title}</span>
                   <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
                 </div>
               ))}
             </div>
             
-            <div className="border-t border-gray-200 pt-4 space-y-3 text-sm">
+            <div className="border-t border-gray-200 dark:border-zinc-800 pt-4 space-y-3 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-500 uppercase text-[10px] tracking-widest">Subtotal</span>
                 <span>${totals.subtotal.toFixed(2)}</span>
@@ -256,12 +256,12 @@ export const CheckoutPage = () => {
                 <span>${totals.tax.toFixed(2)}</span>
               </div>
               {totals.discount > 0 && (
-                <div className="flex justify-between text-emerald-600">
+                <div className="flex justify-between text-emerald-600 dark:text-emerald-400">
                   <span className="uppercase text-[10px] tracking-widest">Discount (10%)</span>
                   <span>-${totals.discount.toFixed(2)}</span>
                 </div>
               )}
-              <div className="flex justify-between pt-4 mt-4 border-t border-black text-lg font-bold">
+              <div className="flex justify-between pt-4 mt-4 border-t border-black dark:border-white text-lg font-bold">
                 <span className="uppercase tracking-widest">Total</span>
                 <span>${totals.total.toFixed(2)}</span>
               </div>

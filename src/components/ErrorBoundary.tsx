@@ -27,10 +27,10 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-white text-black flex flex-col items-center justify-center p-6 text-center">
+        <div className="min-h-screen bg-white text-black dark:bg-zinc-950 dark:text-zinc-50 flex flex-col items-center justify-center p-6 text-center transition-colors">
           <AlertCircle className="w-12 h-12 text-red-600 mb-6" />
           <h1 className="text-2xl font-light uppercase tracking-[0.2em] mb-4">Something went wrong</h1>
-          <p className="text-gray-500 uppercase tracking-widest text-xs mb-8">
+          <p className="text-gray-500 dark:text-gray-400 uppercase tracking-widest text-xs mb-8">
             An unexpected application error occurred.
           </p>
           
