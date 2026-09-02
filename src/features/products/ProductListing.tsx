@@ -13,6 +13,8 @@ export const ProductListing = () => {
     setCategory,
     maxPrice,
     setMaxPrice,
+    sortOption,
+    setSortOption,
     filteredProducts,
     uniqueCategories,
     clearFilters,
@@ -43,7 +45,7 @@ export const ProductListing = () => {
         <div className="sticky top-24 space-y-12">
           <div className="flex items-center justify-between border-b border-black pb-4">
             <h2 className="text-xs uppercase tracking-widest font-bold">Filters</h2>
-            {(search || category || maxPrice) && (
+            {(search || category || maxPrice || sortOption) && (
               <button onClick={clearFilters} className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black flex items-center gap-1 cursor-pointer">
                 <X size={12} /> Clear
               </button>
@@ -59,6 +61,20 @@ export const ProductListing = () => {
                 onChange={(e) => setSearch(e.target.value)}
                 className="input-field text-xs uppercase tracking-widest"
               />
+            </div>
+
+            <div className="space-y-4">
+              <label className="text-[10px] uppercase tracking-widest font-bold block">Sort By</label>
+              <select
+                value={sortOption}
+                onChange={(e) => setSortOption(e.target.value as any)}
+                className="input-field appearance-none cursor-pointer text-xs uppercase tracking-widest pb-1"
+              >
+                <option value="">RECOMMENDED</option>
+                <option value="price-asc">PRICE: LOW TO HIGH</option>
+                <option value="price-desc">PRICE: HIGH TO LOW</option>
+                <option value="rating-desc">HIGHEST RATED</option>
+              </select>
             </div>
 
             <div className="space-y-4">
