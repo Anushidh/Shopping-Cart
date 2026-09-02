@@ -1,6 +1,7 @@
 import { useProducts } from '../../hooks/useProducts';
 import { useProductFilters } from '../../hooks/useProductFilters';
 import { ProductCard } from '../../components/ProductCard';
+import { ProductSkeleton } from '../../components/ProductSkeleton';
 import { X, Loader2, AlertCircle } from 'lucide-react';
 
 export const ProductListing = () => {
@@ -19,15 +20,6 @@ export const ProductListing = () => {
     uniqueCategories,
     clearFilters,
   } = useProductFilters(response?.products);
-
-  if (isLoading) {
-    return (
-      <div className="min-h-[80vh] flex flex-col items-center justify-center text-black gap-4">
-        <Loader2 className="w-8 h-8 animate-spin" />
-        <p className="uppercase text-xs tracking-widest">Loading Collection</p>
-      </div>
-    );
-  }
 
   if (isError) {
     return (
@@ -116,13 +108,21 @@ export const ProductListing = () => {
         <header className="mb-12 flex justify-between items-end">
           <div>
             <h1 className="text-3xl lg:text-4xl font-light uppercase tracking-[0.2em] mb-2">Collection</h1>
-            <p className="text-gray-500 text-xs uppercase tracking-widest">
-              {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'}
-            </p>
+            {!isLoading && (
+              <p className="text-gray-500 text-xs uppercase tracking-widest">
+                {filteredProducts.length} {filteredProducts.length === 1 ? 'item' : 'items'}
+              </p>
+            )}
           </div>
         </header>
 
-        {filteredProducts.length === 0 ? (
+        {isLoading ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-6 gap-y-12">
+            {[...Array(8)].map((_, i) => (
+              <ProductSkeleton key={i} />
+            ))}
+          </div>
+        ) : filteredProducts.length === 0 ? (
           <div className="py-24 flex flex-col items-center text-center text-gray-400">
             <p className="text-sm uppercase tracking-widest mb-6 text-black">No items match your criteria</p>
             <button onClick={clearFilters} className="btn btn-primary">
