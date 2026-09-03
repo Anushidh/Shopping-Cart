@@ -80,8 +80,8 @@ export const CheckoutPage = () => {
     <>
       <ConfirmModal 
         isOpen={isClearModalOpen}
-        title="Clear Bag"
-        message="Are you sure you want to remove all items from your shopping bag? This action cannot be undone."
+        title="Clear Cart"
+        message="Are you sure you want to remove all items from your shopping cart? This action cannot be undone."
         onConfirm={clearCart}
         onCancel={() => setIsClearModalOpen(false)}
       />
@@ -103,7 +103,7 @@ export const CheckoutPage = () => {
         {step === 1 && (
           <div className="animate-in fade-in duration-500">
             <div className="flex justify-between items-end mb-8">
-              <h2 className="text-2xl font-light uppercase tracking-[0.2em]">Shopping Bag</h2>
+              <h2 className="text-2xl font-light uppercase tracking-[0.2em]">Shopping Cart</h2>
               {!isCartEmpty && (
                 <button 
                   onClick={() => setIsClearModalOpen(true)} 
@@ -116,7 +116,7 @@ export const CheckoutPage = () => {
             
             {isCartEmpty ? (
               <div className="py-12 text-center text-gray-500">
-                <p className="uppercase tracking-widest text-sm mb-6 text-black dark:text-white">Your bag is empty</p>
+                <p className="uppercase tracking-widest text-sm mb-6 text-black dark:text-white">Your cart is empty</p>
                 <Link to="/" className="btn btn-primary">
                   Return to Shop
                 </Link>

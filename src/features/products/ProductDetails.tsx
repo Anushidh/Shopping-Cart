@@ -10,8 +10,8 @@ export const ProductDetails = () => {
 
   if (isLoading) {
     return (
-      <div className="max-w-[1200px] mx-auto px-6 py-12">
-        <div className="h-4 w-32 bg-gray-200 dark:bg-zinc-800 animate-pulse mb-12"></div>
+      <div className="max-w-[1200px] mx-auto px-6 pt-6 pb-12">
+        <div className="h-4 w-32 bg-gray-200 dark:bg-zinc-800 animate-pulse mb-8"></div>
         <div className="flex flex-col md:flex-row gap-12 lg:gap-24">
           <div className="w-full md:w-1/2 aspect-[3/4] bg-gray-200 dark:bg-zinc-800 animate-pulse"></div>
           
@@ -51,8 +51,8 @@ export const ProductDetails = () => {
   }
 
   return (
-    <div className="max-w-[1200px] mx-auto px-6 py-12">
-      <Link to="/" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 hover:text-black dark:hover:text-white mb-12 transition-colors">
+    <div className="max-w-[1200px] mx-auto px-6 pt-6 pb-12">
+      <Link to="/" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-gray-500 hover:text-black dark:hover:text-white mb-8 transition-colors">
         <ArrowLeft size={14} /> Back to Collection
       </Link>
       
@@ -94,7 +94,7 @@ export const ProductDetails = () => {
             className="btn btn-primary w-full py-4 text-sm gap-3"
           >
             <ShoppingBag size={18} />
-            ADD TO BAG
+            ADD TO CART
           </button>
         </div>
       </div>

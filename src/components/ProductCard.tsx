@@ -49,7 +49,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
             className="w-full btn btn-secondary !py-2 text-[10px] gap-2 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
           >
             <ShoppingBag size={14} />
-            ADD TO BAG
+            ADD TO CART
           </button>
         </div>
       </div>
