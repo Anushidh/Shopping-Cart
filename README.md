@@ -14,6 +14,7 @@ A responsive, high-performance shopping cart application built with React and Ty
 - **Routing**: React Router DOM
 - **Icons**: Lucide React
 - **Package Manager**: pnpm
+- **Deployment**: Vercel
 
 ## Setup Instructions
 1. Ensure you have Node.js and `pnpm` installed on your machine.
@@ -27,6 +28,10 @@ A responsive, high-performance shopping cart application built with React and Ty
 - **Run unit tests**: `pnpm test`
 - **Build for production**: `pnpm build`
 - **Preview production build**: `pnpm preview`
+
+## Deployment
+The application is deployed on **Vercel** and is publicly accessible at:
+🔗 [https://shopping-cart-sand-nine.vercel.app/](https://shopping-cart-sand-nine.vercel.app/)
 
 ## API Used
 This project consumes the free public API endpoints:
