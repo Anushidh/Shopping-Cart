@@ -8,6 +8,7 @@ export const ProductSchema = z.object({
   price: z.number(),
   rating: z.number(),
   thumbnail: z.string(),
+  images: z.array(z.string()).optional(),
 });
 
 export const ProductResponseSchema = z.object({
