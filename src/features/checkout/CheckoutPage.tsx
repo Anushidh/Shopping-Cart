@@ -160,10 +160,24 @@ export const CheckoutPage = () => {
                 <div className="w-full lg:w-80 flex-shrink-0">
                   <div className="bg-gray-50 dark:bg-zinc-900/50 p-6">
                     <h3 className="text-xs font-bold uppercase tracking-widest mb-6">Order Summary</h3>
-                    <div className="space-y-4 text-sm mb-6">
+                    <div className="space-y-3 text-sm mb-6">
                       <div className="flex justify-between">
                         <span className="text-gray-500 uppercase text-[10px] tracking-widest">Subtotal</span>
                         <span>${totals.subtotal.toFixed(2)}</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 uppercase text-[10px] tracking-widest">Tax (5%)</span>
+                        <span>${totals.tax.toFixed(2)}</span>
+                      </div>
+                      {totals.discount > 0 && (
+                        <div className="flex justify-between text-emerald-600 dark:text-emerald-400">
+                          <span className="uppercase text-[10px] tracking-widest">Discount (10%)</span>
+                          <span>-${totals.discount.toFixed(2)}</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between pt-4 border-t border-gray-200 dark:border-zinc-800 font-bold">
+                        <span className="uppercase tracking-widest text-[10px]">Estimated Total</span>
+                        <span>${totals.total.toFixed(2)}</span>
                       </div>
                     </div>
                     
